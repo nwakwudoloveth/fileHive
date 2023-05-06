@@ -3,6 +3,9 @@ const { Client } = require("pg");
 const {
   PostgresSQLFileRepository,
 } = require("./repositories/postgresql/fileRepository");
+const {
+  PostgresSQLFolderRepository,
+} = require("./repositories/postgresql/folderRepository");
 
 class FailedToConnectToDatabase extends Error {}
 
@@ -20,7 +23,7 @@ async function initializeDatabase(host, port, database, userName, password) {
     host: host,
     port: port,
     database: database,
-    user: userName,
+    userName: userName,
     password: password,
   });
 
@@ -30,9 +33,11 @@ async function initializeDatabase(host, port, database, userName, password) {
     throw FailedToConnectToDatabase(err.message);
   }
   const fileRepository = new PostgresSQLFileRepository(client);
+  const folderRepository = new PostgresSQLFolderRepository(client);
   return {
     client,
     fileRepository,
+    folderRepository,
   };
 }
 
