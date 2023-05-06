@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS files
+ADD COLUMN IF NOT EXISTS content bytea ;

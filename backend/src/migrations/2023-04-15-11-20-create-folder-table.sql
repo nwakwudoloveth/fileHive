@@ -1,5 +1,4 @@
-
-  CREATE TABLE IF NOT EXISTS folders (
+ CREATE TABLE IF NOT EXISTS folders (
     id INTEGER PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     folder INTEGER,
