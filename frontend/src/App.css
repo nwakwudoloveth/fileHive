@@ -1,38 +1,150 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFFFFF;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body{
+  margin : 0;
+  padding : 0;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ /* sidebar styling */
+ .Button-container{
+  display: grid;
+  justify-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.Button-container .Blue-button {
+  background-color: #F5D75E;
+  color: #000000;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  display:flex;
+  justify-items: center;
   align-items: center;
+  margin: 20px auto 20px;
+}
+.Button-container .White-button {
+  align-items: center;
+  background-color: #F5F6F8;
+  color: #000000;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  justify-items: center;
+  display:flex;
+  margin: 10px auto 10px;
+}
+.Leftbar{
+  height: 100%;
+  width: 250px;
+  background-color: #000000;
+  position: absolute;
+  top: -1px;
+  display: inline-block;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.Leftbar .App-logo {
+  margin-top: 30px;
+  margin-left: 30px;
+   }
+
+.DirectoryList{
+  padding:0;
+  width:100%;
 }
 
-.App-link {
-  color: #61dafb;
+.DirectoryList .row{
+  width:100%;
+  height:50px;
+  list-style-type: none;
+  margin: 0%;
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-items: center;
+  color: #5F5F5F;
+
+}
+.DirectoryList .row:hover{
+  cursor: pointer;
+  background-color: #252527;
+  
+}
+.DirectoryList .row#active{
+  background-color: #ffffff2e;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+.row #icon {
+  flex:30%;
+  display: grid;
+  justify-items: center;
+}
+.row #title{
+  flex:70%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+/* Topbar styling */
+.Topbar{
+  display:flex;
+  align-items: center;
+  padding: 10px;
+  flex-direction: row;
+  margin-left: 250px;
 }
+
+.Topbar > * {
+ margin-left: 50px; 
+}
+.Search-bar{
+  display: flex;
+  margin-right:20px;
+   
+  }
+
+.Search-bar .Search-input {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #F1F1F1; 
+  padding: 10px;
+  width:300px;
+  height: 45px;
+  border: none;
+  outline: none;
+ 
+}
+.Search-button{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  background-color: #F5D75E;
+  color: #5F5F5F;
+}
+.Sort{
+  background-color: #F5F6F8;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: row;
+  left: 300px;
+  position: relative;
+  width: 110px;
+  height: 45px;
+  padding: auto;
+}
+
+.Sort > * { 
+  margin-left: 10px;
+ }
+
