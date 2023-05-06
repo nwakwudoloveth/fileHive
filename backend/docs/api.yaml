@@ -1,11 +1,13 @@
+
 openapi: 3.0.3
-info: 
+info:
   title: File Manager API
-  description: 'This API provides a variety of operations to work with files and directories such as creating, moving, copying, deleting, renaming files and directories, checking file attributes like size and modification date, and reading and writing file contents. It can also provide search and filtering capabilities to retrieve files and directories matching specific criteria.'
+  description: "This API sprovides a variety of operations to work with files and directories such as creating, moving, copying, deleting, renaming files and directories, checking file attributes like size and modification date, and reading and writing file contents. It can also provide search and filtering capabilities to retrieve files and directories matching specific criteria."
   contact:
     name: Nwakwudo Loveth
-    email: 'nwakwudoloveth@gmail.com'
+    email: "nwakwudoloveth@gmail.com"
   version: 1.0.0
+  
 servers:
   - url: ""
     description: Development server
@@ -13,162 +15,166 @@ servers:
     description: Staging server
   - url: ""
     description: Production server
-paths: 
-    /files:
-        get:
-          description: Returns files based on  ID
-          summary: Find files by  ID
-          parameters:
-            - in: query
-              name: File Id
-              required: true
+paths:
+  /files:
+    get:
+      description: Returns files based on  ID
+      summary: Find files by  ID
+      parameters:
+        - in: query
+          name: File Id
+          required: true
+          schema:
+            type: number
+            example: 123456
+      responses:
+        "200":
+          description: File response
+          content:
+            application/json:
               schema:
-                type: number
-                example: 123456
-          responses:
-            '200':
-              description: File response
-              content:
-                application/json:
-                    schema:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/file'
-              
-        post:
-          summary: 'Create a file'
-          requestBody:
-            description: File data
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    id:
-                       type: number
-                  required:
-                    - name
-          responses:
-           '201':
-              description: 'File created successfully'
-              content:
-                application/json:
-                  schema:
-                    type: object
-                    properties:
-                      files:
-                          type: object
-                          properties:
-                            id:
-                              type: number
-                            name:
-                              type: string
-                            size:
-                              type: number
-                            updatedAt:
-                              type: string
-                              format: date-time
-                            extension:
-                              type: string
-                    required:
-                      - files
-        patch:
-            summary: Updates a file 
-            operationId: updateFileWithForm
-            parameters: 
-            - name: File Id
-              in: path
-              description: ID of file that needs to be updated
-              required: true
-              schema:
-                type: number
-            requestBody:
-              content:
-                 'application/json':
-                   schema:
-                    type: object
-                    properties:
-                      name: 
-                        description: Updated name of the file
-                        type: string
-                      
-                    required:
-                      - name
-            responses:
-              '200':
-                description: Successfully updated file.
-                content:
-                  application/json:
-                    schema:
-                      type: object
-                      properties:
-                        files: 
-                          type: object
-                          properties:
-                              id:
-                                type: string
-                              name:
-                                type: string
-                              size:
-                                type: number
-                              updatedAt:
-                                type: string
-                                format: date-time
-                              extension:
-                                type: string
-                      required:
-                        - files
-        delete:
-            summary: Deletes a File with the specified ID.
-            parameters:
-              - name: id
-                in: path
-                description: The unique identifier of the resource to be deleted.
-                required: true
-                schema:
-                  type: number
-            responses:
-              '200':
-                description: Successful
-                content:
-                  application/json:
-                    schema:
-                      type: object
-                      properties:
-                        id: 
-                         type: number
-                        name:
-                         type: string
-                        size:
-                              type: number
-                        updatedAt:
-                          type: string
-                          format: date-time
-                        extension:
-                          type: string
-                      required:
-                        - files
+                type: array
+                items:
+                  $ref: "#/components/schemas/file"
 
-                
+    post:
+      summary: "Create a file"
+      requestBody:
+        description: File data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                id:
+                  type: number
+              required:
+                - name
+      responses:
+        "201":
+          description: "File created successfully"
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  files:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      name:
+                        type: string
+                      size:
+                        type: number
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      extension:
+                        type: string
+                required:
+                  - files
+  /files/{id}:
+    patch:
+      summary: Updates a file
+      operationId: updateFileWithForm
+      parameters:
+        - name: id
+          in: path
+          description: ID of file that needs to be updated
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          "application/json":
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Updated name of the file
+                  type: string
+
+              required:
+                - name
+      responses:
+        "200":
+          description: Successfully updated file.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  files:
+                    type: array
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      size:
+                        type: number
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      extension:
+                        type: string
+                required:
+                  - files
+    delete:
+      summary: Deletes a File with the specified ID.
+      parameters:
+        - name: id
+          in: path
+          description: The unique identifier of the resource to be deleted.
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  files:
+                    type: array
+                    properties:
+                      id:
+                        type: number
+                      name:
+                        type: string
+                      size:
+                        type: number
+                      updatedAt:
+                        type: string
+                        format: date-time
+                      extension:
+                        type: string
+                required:
+                  - files
+
 components:
   schemas:
     file:
-        type: object
-        properties:
-            id: 
-              type: number
-              example: 1
-            name: 
-              type: string
-              example: "file name"
-            size:
-              type: number
-            updatedAt:
-              type: string
-              format: date-time
-            extension:
-              type: string
-              required:
-                - files                         
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+          example: "file name"
+        size:
+          type: number
+        updatedAt:
+          type: string
+          format: date-time
+        extension:
+          type: string
+      required:
+        - name
+        - id
