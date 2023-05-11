@@ -1,4 +1,4 @@
-# FILEHIVE (FILE MANAGER)
+## FileHive (File Manager)
 
 ## This Project is a work in progress
 
