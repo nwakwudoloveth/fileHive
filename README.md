@@ -1,10 +1,10 @@
-## FileHive (File Manager)
+# FileHive (File Manager)
 
 ## This Project is a work in progress
 
 ###
 
-> File Manager is a web-based tool that enables users to manage files and directories in a user-friendly way. Its purpose is to provide a simple and intuitive interface for users to perform common file management tasks.
+> FileHive is a web-based tool that enables users to manage files and directories in a user-friendly way. Its purpose is to provide a simple and intuitive interface for users to perform common file management tasks.
 
 ---
 
